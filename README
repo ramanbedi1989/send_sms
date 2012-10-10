@@ -1,10 +1,10 @@
 The Following is the SendSMS command line automated code written in Ruby
 
-This ruby code will work only for 'http://site1.way2sms.com' and http:://160by2.com sites.
+This ruby code will work only for 'http://site1.way2sms.com' and http://160by2.com sites.
 
 To Use
 
- s= Sms.new(url)
+ s= SMS.new(url)
    
   Specify url of site i.e http://160by2.com or 'http://site1.way2sms.com'
   
@@ -22,4 +22,12 @@ To Use
       Action => "A Unique Identifier Given by Way2SMS can be obtained by inspecting the form of Quick SMS using firebug lite or any other HTML inspecting tool(Note the Action wont be directly by ispecting page source as it is generated using Javascript on load)"                
             
 
-     
+     Example
+   sms = SMS.new('http://160by2.com')
+   => #<SMS:0xbc1d350 @url="http://160by2.com", @cookie=nil, @referer=nil, @response=nil, @http=#<Net::HTTP 160by2.com:80 open=false>>
+
+   sms.login('9924000000', 'test123')
+   => ["LastLoginCookie=\"10-10-2012-901-15:04-901-Mozilla FireFox 3.5.3 GTB7.0-901-49.248.101.153-901-26-10-2011\"; Version=1; Max-Age=7200, JSESSIONID=MM~5C2D1597ED22B26B4C6DBB5A65C71DC2.8513; Path=/", "http://160by2.com/re-login", #<Net::HTTPOK 200 OK readbody=true>, #<Net::HTTP 160by2.com:80 open=false>] 
+
+   sms.send_message('sa65sdf65645','9914575621', 'HELLO!!!!!!!!!!!!!!')
+   => ["LastLoginCookie=\"10-10-2012-901-15:04-901-Mozilla FireFox 3.5.3 GTB7.0-901-49.248.101.153-901-26-10-2011\"; Version=1; Max-Age=7200, JSESSIONID=MM~5C2D1597ED22B26B4C6DBB5A65C71DC2.8513; Path=/", "http://160by2.com/SendSMSAction", #<Net::HTTPOK 200 OK readbody=true>, #<Net::HTTP 160by2.com:80 open=false>] 
