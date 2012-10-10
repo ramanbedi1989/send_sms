@@ -22,8 +22,10 @@ class SMS
   end
 
   def send_message(action, mobile_no, message)
-    if message.length > 140
+    if message.length == 0 || message.length > 140
       p "Message should be only 140 characters"
+    elsif mobile_no.length < 10 || mobile_no.length > 10
+      p "Mobile number is wrong. It should contain only 10 numbers"
     else
       message = CGI.escape(message)
       if url == "http://160by2.com"
