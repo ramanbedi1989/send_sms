@@ -1,0 +1,25 @@
+The Following is the SendSMS command line automated code written in Ruby
+
+This ruby code will work only for 'http://site1.way2sms.com' and http:://160by2.com sites.
+
+To Use
+
+ s= Sms.new(url)
+   
+  Specify url of site i.e http://160by2.com or 'http://site1.way2sms.com'
+  
+
+  Login to site
+  s.login(username, password)
+
+  send message
+  s.send_message(action, number, message)
+
+     message => Message that need to be sent
+  
+     number => "Receiver of the message mobile Number"
+  
+      Action => "A Unique Identifier Given by Way2SMS can be obtained by inspecting the form of Quick SMS using firebug lite or any other HTML inspecting tool(Note the Action wont be directly by ispecting page source as it is generated using Javascript on load)"                
+            
+
+     
