@@ -33,9 +33,17 @@ module Remote
     cookie ||= header['Cookie']
     referer ||= header['Referer']
     if method == :get
-      response = http.get(path,header.delete_if {|i,j| j.nil? })
+      begin
+        response = http.get(path,header.delete_if {|i,j| j.nil? })
+      rescue
+        return "Url not found"
+      end
     else
-      response = http.post(path,data,header.delete_if {|i,j| j.nil? })
+      begin
+        response = http.post(path,data,header.delete_if {|i,j| j.nil? })
+      rescue
+        return "Url not found"
+      end
       cookie ||= response['set-cookie']
     end
     case response.code
