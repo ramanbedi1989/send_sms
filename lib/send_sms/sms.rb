@@ -32,11 +32,17 @@ class SMS
         action_name = "/SendSMSAction"
         sms_data = 'action1='+action+'&mobile1='+mobile_no+'&msg1='+message
       else
-        action_name ='/quicksms.action'
-        sms_data = 'HiddenAction=instantsms&Action='+action+'&MobNo='+mobile_no+'&textArea='+message
+        action_name ='/smstoss.action'
+        token = getToken
+        sms_data = 'Token='+token+'&ssaction='+action+'&mobile='+mobile_no+'&message='+message
       end
       fetch(http,action_name,set_header(cookie,referer),sms_data,:post)
     end
+  end
+
+  def getToken
+  	jsessid = CGI::Cookie::parse(cookie)["JSESSIONID"].first
+  	jsessid[jsessid.index("~")+1, jsessid.length-1]
   end
 end
 
